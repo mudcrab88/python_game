@@ -14,9 +14,8 @@ def run_game():
     #Запуск основного цикла игры
     while True:
         #Отслеживание событий клавиатуры и мыши
-        gf.check_events()
+        gf.check_events(ship)
+        ship.update()
         #Отображение последнего прорисованного экрана
-        screen.fill(ai_settings.bg_color)
-        ship.blitme()
-        pygame.display.flip()
+        gf.update_screen(ai_settings, screen, ship)
 run_game()

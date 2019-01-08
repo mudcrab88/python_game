@@ -1,9 +1,24 @@
 import pygame
 import sys
 
-def check_events():
+def check_events(ship):
     # Отслеживание событий клавиатуры и мыши
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             print("Good Bye!")
             sys.exit()
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RIGHT:
+                ship.moving_right = True
+            elif event.key == pygame.K_LEFT:
+                ship.moving_left = True
+        elif event.type == pygame.KEYUP:
+            if event.key == pygame.K_RIGHT:
+                ship.moving_right = False
+            if event.key == pygame.K_LEFT:
+                ship.moving_left = False
+
+def update_screen(ai_setings, screen, ship):
+    screen.fill(ai_setings.bg_color)
+    ship.blitme()
+    pygame.display.flip()
