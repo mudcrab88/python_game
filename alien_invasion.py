@@ -2,6 +2,7 @@ import pygame
 import sys
 from settings import Settings
 from ship import Ship
+import game_functions as gf
 
 def run_game():
     #Инициализация игры,создание экрана
@@ -13,10 +14,7 @@ def run_game():
     #Запуск основного цикла игры
     while True:
         #Отслеживание событий клавиатуры и мыши
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                print("Good Bye!")
-                sys.exit()
+        gf.check_events()
         #Отображение последнего прорисованного экрана
         screen.fill(ai_settings.bg_color)
         ship.blitme()
