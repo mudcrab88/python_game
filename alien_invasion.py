@@ -4,6 +4,8 @@ from settings import Settings
 from ship import Ship
 import game_functions as gf
 from pygame.sprite import Group
+from alien import Alien
+
 
 def run_game():
     #Инициализация игры,создание экрана
@@ -12,6 +14,8 @@ def run_game():
     screen = pygame.display.set_mode((ai_settings.screen_width,ai_settings.screen_height))
     pygame.display.set_caption("Alien Invasion")
     ship = Ship(ai_settings, screen)
+    # Создание пришельца
+    alien = Alien(ai_settings, screen)
     # Создание группы для хранения пуль.
     bullets = Group()
     #Запуск основного цикла игры
@@ -21,5 +25,5 @@ def run_game():
         ship.update()
         gf.update_bullets(bullets)
         #Отображение последнего прорисованного экрана
-        gf.update_screen(ai_settings, screen, ship, bullets)
+        gf.update_screen(ai_settings, screen, ship, alien, bullets)
 run_game()
