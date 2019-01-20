@@ -18,6 +18,8 @@ def run_game():
     alien = Alien(ai_settings, screen)
     # Создание группы для хранения пуль.
     bullets = Group()
+    aliens = Group()
+    gf.create_fleet(ai_settings, screen, ship, aliens)
     #Запуск основного цикла игры
     while True:
         #Отслеживание событий клавиатуры и мыши
@@ -25,5 +27,5 @@ def run_game():
         ship.update()
         gf.update_bullets(bullets)
         #Отображение последнего прорисованного экрана
-        gf.update_screen(ai_settings, screen, ship, alien, bullets)
+        gf.update_screen(ai_settings, screen, ship, aliens, bullets)
 run_game()
